@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}LT_Schmiddy's To Do App{% endblock %}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/static/libs/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
+
+    {% block style %}{% endblock %}
+
+    <script src="/static/libs/jquery/jquery.js"></script>
+    <script src="/static/libs/popper/popper.js"></script>
+    <script src="/static/libs/bootstrap/js/bootstrap.js"></script>
+    <script src="/static/scripts/common.js"></script>
+
+    {% block head_scripts %}{% endblock %}
+
+
+</head>
+<body>
+
+{% block body %}{% endblock %}
+
+{% block foot_scripts %}{% endblock %}
+</body>
+</html>

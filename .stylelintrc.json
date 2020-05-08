@@ -1,0 +1,12 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+      "indentation": [
+        4,
+        {
+          "except": ["value"],
+          "severity": "warning"
+        }
+      ]
+    }
+}
