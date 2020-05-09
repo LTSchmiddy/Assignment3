@@ -3,5 +3,7 @@
     <div class="item_description">{{ item.description }}</div>
     <div class="item_date_added">{{ item.date_added }}</div>
     <div class="item_date_due">{{ item.date_due }}</div>
+    {% if item.completed %} <div class="item_completed">Completed</div> {% endif %}
+
 </a>
 </li>

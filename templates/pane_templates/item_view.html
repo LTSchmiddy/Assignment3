@@ -1,6 +1,7 @@
 <form class="item_viewer" id="item_viewer">
     <label id="title-label" for="title">Title: <input type="text" id="title" name="title" value="{{ item.title }}"/></label>
-    {{ item.date_added }}
+    <label> Date Added: {{ item.date_added }}</label>
+
     <label id="title-description" for="description">Description: <textarea form="item_viewer" id="description" name="description" >{{ item.description }}</textarea></label>
     <label id="title-date_due" for="date_due">Date Due: <input type="datetime-local" id="date_due" name="date_due" value="{{ item.get_date_due_html() }}"/></label>
     <label id="title-completed" for="completed">Is Completed <input type="checkbox" id="completed" name="completed" {% if item.completed %} checked{% endif %}/></label>
