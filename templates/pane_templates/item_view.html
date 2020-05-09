@@ -1,0 +1,36 @@
+<form id="item_viewer">
+    <input type="text" id="title" name="title" value="{{ item.title }}"/>
+    {{ item.date_added }}
+    <textarea form="item_viewer" id="description" name="description" >{{ item.description }}</textarea>
+    <input type="datetime-local" id="date_due" name="date_due" value="{{ item.get_date_due_html() }}"/>
+    <input type="checkbox" id="completed" name="completed" {% if item.completed %} checked{% endif %}/>
+
+</form>
+
+<button class="btn-primary" onclick="save_item()">Save</button>
+<button class="btn-primary" onclick="delete_item(selected_item)">Delete</button>
+
+<script>
+   function save_item () {
+        $.post('/api/write',
+            {
+                'id': selected_item,
+                'title': $('#title').val(),
+                'description': $('#description').val(),
+                'date_due': $('#date_due').val(),
+                'completed': $('#completed').prop("checked"),
+            },
+            (data, status)=>{
+                console.log(data);
+                console.log(status);
+
+                load_item_list();
+
+            }
+        );
+
+     {#return false;#}
+    }
+
+
+</script>

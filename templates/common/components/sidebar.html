@@ -1,0 +1,61 @@
+<div class="sidebar ui-bar" id="lib-sidebar">
+    <ul id="sidebar-content" class="sidebar-content">
+{#        <li id="sidebar-home"><a class="btn">Home</a></li>#}
+{#        <li id="sidebar-movies"><a class="btn">Movies</a></li>#}
+{#        <li id="sidebar-shows"><a class="btn">TV Shows</a></li>#}
+{#        <li id="sidebar-videos"><a class="btn">Videos</a></li>#}
+{#        <li id="sidebar-libraries"><a class="btn">Libraries</a></li>#}
+
+    </ul>
+
+
+
+
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        let sidebar = document.getElementById('lib-sidebar');
+        let contentField = document.getElementById('content-field');
+        if (sidebar) {
+            let resizer = document.createElement('div');
+            resizer.className = 'drag-handle';
+            {#resizer.style.width = '6px';#}
+            {#resizer.style.height = '100%';#}
+            sidebar.appendChild(resizer);
+            resizer.addEventListener('mousedown', initResize, false);
+        }
+
+        function initResize(e) {
+            window.addEventListener('mousemove', Resize, false);
+            window.addEventListener('mouseup', stopResize, false);
+            {#$('#mainArea.content, #tabs iframe').addClass('marginLeft');#}
+        }
+
+        function Resize(e) {
+            sidebar.style.width = (e.clientX - sidebar.offsetLeft) + 'px';
+            contentField.style.width = 'calc(100vw - ' + (e.clientX - sidebar.offsetLeft) + 'px)';
+            {#$('sidebar-resizable').css('margin-left', (e.clientX - element.offsetLeft) + 'px');#}
+            {#$('#tabs iframe').css('margin-left', (element.offsetLeft + 40) + 'px');#}
+        }
+
+        function stopResize(e) {
+            window.removeEventListener('mousemove', Resize, false);
+            window.removeEventListener('mouseup', stopResize, false);
+            {#$('#tabs iframe').css('margin-left', element.offsetLeft + 'px');#}
+        }
+
+    });
+
+
+    function load_item_list() {
+        $('#sidebar-content').load("/panes/item_list");
+    }
+
+    load_item_list();
+
+
+
+
+</script>

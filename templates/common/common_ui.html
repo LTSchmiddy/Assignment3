@@ -5,10 +5,12 @@
     {% include "common/components/navbar.html" %}
 
     <div class="middle-field">
+    {% include "common/components/sidebar.html" %}
 
-    {% block content %} {% endblock %}
+        <div id="content-field" class="content-field">
+        {% block content %} {% endblock %}
 
-
+        </div>
     </div>
 
 
