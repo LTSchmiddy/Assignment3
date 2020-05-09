@@ -15,13 +15,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-}
-
-
-@media (min-width: 800px){
-    .main-nav {
-        height: 40px;
-    }
+    max-height: 80px;
 }
 
 
@@ -35,7 +29,7 @@ body {
 
 .middle-field {
     position: fixed;
-    top: 40px;
+    top: 75px;
 
     /*display: flex;*/
     left: 0;
@@ -126,7 +120,7 @@ ul.sidebar-content li.sidebar-active {
     position: absolute;
     right: 0;
     height: 100%;
-    overflow: auto;
+
     /*width: 70%;*/
     /*padding: 10px;*/
 
@@ -135,8 +129,9 @@ ul.sidebar-content li.sidebar-active {
 }
 
 .drag-handle{
+
     position: absolute;
-    left: 0;
+    left: -2px;
     top: 0;
     width: 6px;
     height: 100%;
@@ -145,9 +140,11 @@ ul.sidebar-content li.sidebar-active {
     /*float: right;*/
     /*float: left;*/
 
+    border-radius: 2px;
 }
 
 .full_item_view{
+    overflow: auto;
     position: absolute;
     left: 6px;
     top: 0;
@@ -201,7 +198,17 @@ ul.sidebar-content li.sidebar-active {
     resize: none;
 }
 
+@media (min-width: 800px){
+    .main-nav {
+        height: 40px;
+    }
 
+    .middle-field {
+
+        top: 40px;
+
+    }
+}
 
 a, a:visited {
     color: #111111;
