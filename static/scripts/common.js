@@ -2,6 +2,8 @@
 let selected_item = -1;
 
 function open_selected_item(item_id) {
+    set_item_button();
+
     $.post("/panes/item_view", {'id': item_id}, (data, status)=>{
         // $.post("/panes/item_view", (data, status)=>{
         if (status !== 'success') {
@@ -11,9 +13,11 @@ function open_selected_item(item_id) {
         $('#full_item_view').html(data);
 
 
-
+        // set_item_button();
 
     });
+
+
 
 }
 
