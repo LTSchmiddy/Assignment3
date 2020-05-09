@@ -53,12 +53,18 @@
     });
 
 
+
     function load_item_list() {
         $('#sidebar-content').load("/panes/item_list");
     }
 
-    load_item_list();
+    function update_list() {
+        load_item_list();
 
+        setTimeout(update_list, 2000);
+    }
+
+    update_list();
 
 
 
