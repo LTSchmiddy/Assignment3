@@ -23,17 +23,20 @@
             resizer.className = 'drag-handle';
             {#resizer.style.width = '6px';#}
             {#resizer.style.height = '100%';#}
-            sidebar.appendChild(resizer);
+            {#sidebar.appendChild(resizer);#}
+            contentField.appendChild(resizer);
             resizer.addEventListener('mousedown', initResize, false);
         }
 
         function initResize(e) {
+            e.preventDefault();
             window.addEventListener('mousemove', Resize, false);
             window.addEventListener('mouseup', stopResize, false);
             {#$('#mainArea.content, #tabs iframe').addClass('marginLeft');#}
         }
 
         function Resize(e) {
+            e.preventDefault();
             sidebar.style.width = (e.clientX - sidebar.offsetLeft) + 'px';
             contentField.style.width = 'calc(100vw - ' + (e.clientX - sidebar.offsetLeft) + 'px)';
             {#$('sidebar-resizable').css('margin-left', (e.clientX - element.offsetLeft) + 'px');#}
@@ -41,6 +44,7 @@
         }
 
         function stopResize(e) {
+            e.preventDefault();
             window.removeEventListener('mousemove', Resize, false);
             window.removeEventListener('mouseup', stopResize, false);
             {#$('#tabs iframe').css('margin-left', element.offsetLeft + 'px');#}
