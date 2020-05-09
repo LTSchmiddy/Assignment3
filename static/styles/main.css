@@ -17,6 +17,7 @@ body {
     width: 100%;
 }
 
+
 @media (min-width: 800px){
     .main-nav {
         height: 40px;
@@ -26,6 +27,7 @@ body {
 
 .main-nav header {
     font-weight: bolder;
+    font-size: 20px;
     margin: 0 30px;
 }
 
