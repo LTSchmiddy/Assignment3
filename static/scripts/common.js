@@ -2,7 +2,7 @@
 let selected_item = -1;
 
 function open_selected_item(item_id) {
-    set_item_button();
+    set_item_button(item_id);
 
     $.post("/panes/item_view", {'id': item_id}, (data, status)=>{
         // $.post("/panes/item_view", (data, status)=>{
@@ -12,7 +12,6 @@ function open_selected_item(item_id) {
         selected_item = item_id;
         $('#full_item_view').html(data);
 
-
         // set_item_button();
 
     });
@@ -21,7 +20,7 @@ function open_selected_item(item_id) {
 
 }
 
-function set_item_button() {
+function set_item_button(item_id) {
     let selectables = $("#sidebar-content")[0].getElementsByClassName('item_button');
 
         let selected_class = "list_item_id_" + item_id;
