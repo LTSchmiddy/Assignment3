@@ -56,7 +56,7 @@ function new_item() {
         }
         selected_item = data;
         open_selected_item(selected_item)
-        load_item_list();
+        update_item_list();
     });
 }
 
