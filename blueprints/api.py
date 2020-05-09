@@ -1,5 +1,6 @@
 import os
 from flask import Blueprint, request
+from sqlalchemy.exc import DataError
 from db.tables import *
 
 from datetime import datetime
@@ -67,9 +68,12 @@ def update_entry():
 
     r_date_due = request.form.get('date_due')
 
-    if r_date_due != "":
-        entry.date_due = r_date_due
-    else:
+    try:
+        if r_date_due != "":
+            entry.date_due = r_date_due
+        else:
+            entry.date_due = None
+    except DataError as e:
         entry.date_due = None
 
     entry.completed = (request.form.get('completed') == 'true')
