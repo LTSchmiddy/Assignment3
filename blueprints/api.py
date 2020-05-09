@@ -69,7 +69,7 @@ def update_entry():
     r_date_due = request.form.get('date_due')
 
     try:
-        if r_date_due == "" or r_date_due == "None":
+        if r_date_due == "" or r_date_due == "None" or r_date_due == "T":
             entry.date_due = None
 
         else:
