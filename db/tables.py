@@ -13,6 +13,11 @@ def datetime_html_to_py(value: str):
 def datetime_py_to_html(value: datetime):
     return f"{value.year}-{value.month:02}-{value.day:02}T{value.hour:02}:{value.minute:02}"
 
+def time_py_to_html(value: datetime):
+    return f"{value.hour:02}:{value.minute:02}"
+
+def date_py_to_html(value: datetime):
+    return f"{value.year}-{value.month:02}-{value.day:02}"
 
 class TodoItem(dba.Model):
     __tablename__ = 'todo'
@@ -37,6 +42,18 @@ class TodoItem(dba.Model):
             return None
 
         return datetime_py_to_html(self.date_due)
+
+    def get_date_due_date_html(self):
+        if self.date_due is None:
+            return None
+
+        return date_py_to_html(self.date_due)
+
+    def get_date_due_time_html(self):
+        if self.date_due is None:
+            return None
+
+        return time_py_to_html(self.date_due)
 
 
 

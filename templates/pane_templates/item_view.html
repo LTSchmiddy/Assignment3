@@ -3,27 +3,42 @@
     <label> Date Added: {{ item.date_added }}</label>
 
     <label id="title-description" for="description">Description: <textarea form="item_viewer" id="description" name="description" >{{ item.description }}</textarea></label>
-    <label id="title-date_due" for="date_due">Date Due: <input type="datetime-local" id="date_due" name="date_due" value="{{ item.get_date_due_html() }}"/></label>
+
+
+
+    <label id="title-date_due" for="date_due">
+
+        Date Due:
+        <input type="date" id="date_due_date" name="date_due_date" value="{{ item.get_date_due_date_html() }}"/>
+        <input type="time" id="date_due_time" name="date_due_time" value="{{ item.get_date_due_time_html() }}"/>
+
+
+    </label>
+
+
     <label id="title-completed" for="completed">Is Completed <input type="checkbox" id="completed" name="completed" {% if item.completed %} checked{% endif %}/></label>
 
 
-    <br/>
-    <button class="btn-primary" onclick="save_item()">Save</button>
-    <button class="btn-primary" onclick="delete_item(selected_item)">Delete</button>
+
 
 </form>
+
+<div class="item_viewer">
+    <button class="btn-primary" onclick="save_item()">Save</button>
+    <button class="btn-primary" onclick="delete_item(selected_item)">Delete</button>
+</div>
 
 {#<button class="btn-primary" onclick="save_item()">Save</button>#}
 {#<button class="btn-primary" onclick="delete_item(selected_item)">Delete</button>#}
 
 <script>
-   function save_item () {
+    function save_item () {
         $.post('/api/write',
             {
                 'id': selected_item,
                 'title': $('#title').val(),
                 'description': $('#description').val(),
-                'date_due': $('#date_due').val(),
+                'date_due': $('#date_due_date').val() + "T" + $('#date_due_time').val(),
                 'completed': $('#completed').prop("checked"),
             },
             (data, status)=>{
@@ -35,8 +50,9 @@
             }
         );
 
-     {#return false;#}
+     return false;
     }
+
 
 
 </script>
