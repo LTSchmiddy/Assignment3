@@ -54,17 +54,19 @@
 
 
 
-    function load_item_list() {
-        $('#sidebar-content').load("/panes/item_list");
+    function load_item_list(callback = ()=>{}) {
+        $('#sidebar-content').load("/panes/item_list", callback);
     }
 
-    function update_list() {
-        load_item_list();
-        set_item_button(selected_item);
+    function update_item_list() {
+        load_item_list((data, status)=> {
+            set_item_button(selected_item);
+        });
+
         {#setTimeout(update_list, 2000);#}
     }
 
-    update_list();
+    update_item_list();
 
 
 

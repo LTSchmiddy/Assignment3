@@ -37,6 +37,9 @@ class TodoItem(dba.Model):
 
         return TodoItem.query.order_by(TodoItem.id.desc()).first().id + 1
 
+    def get_date_added_string(self):
+        return str(self.date_added)
+
     def get_date_due_html(self):
         if self.date_due is None:
             return None

@@ -33,19 +33,34 @@
 
 <script>
     function save_item () {
+        let send_time = $('#date_due_time').val();
+        let send_date = $('#date_due_date').val();
+
+        if (send_date === "" && send_time !== "") {
+            let today = new Date();
+            send_date = today.getFullYear() + "-" + (today.getMonth() + 1 ) + "-" + today.getDate();
+        }
+
+        if (send_date !== "" && send_time === "") {
+            let today = new Date();
+            send_time = "23:59";
+        }
+
         $.post('/api/write',
             {
                 'id': selected_item,
                 'title': $('#title').val(),
                 'description': $('#description').val(),
-                'date_due': $('#date_due_date').val() + "T" + $('#date_due_time').val(),
+                'date_due': send_date + "T" + send_time,
                 'completed': $('#completed').prop("checked"),
             },
             (data, status)=>{
                 console.log(data);
                 console.log(status);
 
-                load_item_list();
+                update_item_list();
+                set_item_button(selected_item);
+                open_selected_item(selected_item);
 
             }
         );

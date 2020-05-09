@@ -1,6 +1,7 @@
 
 body {
     background-color: #E6E6E6;
+    color: #111111;
 }
 
 .ui-bar {
@@ -78,7 +79,7 @@ ul.sidebar-content li a {
     display: block;
     width: 100%;
     height: 100%;
-    padding: 10px 20%;
+    padding: 10px 10%;
     text-align: left;
 }
 
@@ -91,11 +92,31 @@ ul.sidebar-content li.sidebar-active {
 }
 
 .item_button {
+    /*max-height: 100px;*/
+    /*overflow: hidden;*/
+}
+
+.item_button-completed {
+    background-color: #77ff77;
+}
+
+.item_button .item_description {
+    max-height: 1.5em;
+    overflow: hidden;
+    color: #777777;
 
 }
 
+.item_button:not(.item_button-completed) .item_date_due {
+    color: #990000;
+}
+
+.item_completed {
+    color: #006600;
+}
+
 .item_button-active {
-    background-color: #ffffff;
+    background-color: #ffffff !important;
 }
 
 
